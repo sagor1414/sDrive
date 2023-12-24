@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "610089342620",
+    "project_id": "sdrive-edfbb",
+    "storage_bucket": "sdrive-edfbb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610089342620:android:357ca005a56973eb3aff59",
+        "android_client_info": {
+          "package_name": "com.example.sdrive"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC633r7-00uYIEj-VPXrfUVOOWixOMx08Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
