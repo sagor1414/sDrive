@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:sdrive/app/auth/login_controller/login_controller.dart';
+import 'package:sdrive/app/widgets/loading_indicator.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../../../general/utils/color.dart';
@@ -60,17 +63,25 @@ class LoginView extends StatelessWidget {
                       style: textStyle(20, textColor, FontWeight.w600),
                     ),
                     20.heightBox,
-                    Container(
-                      width: context.screenWidth / 1.7,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.deepOrangeAccent.withOpacity(0.8),
-                      ),
-                      child: Center(
-                        child: Text(
-                          "Let's go",
-                          style: textStyle(23, Colors.white, FontWeight.w700),
+                    InkWell(
+                      onTap: () => Get.find<AuthController>().loin(context),
+                      child: Container(
+                        width: context.screenWidth / 1.7,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.deepOrangeAccent.withOpacity(0.8),
+                        ),
+                        child: Obx(
+                          () => Center(
+                            child: Get.find<AuthController>().isLoading.value
+                                ? Loadingindicator(color: Colors.greenAccent)
+                                : Text(
+                                    "Let's go",
+                                    style: textStyle(
+                                        23, Colors.white, FontWeight.w700),
+                                  ),
+                          ),
                         ),
                       ),
                     ),

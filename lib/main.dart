@@ -1,7 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sdrive/app/auth/login_view/login_view.dart';
+import 'package:sdrive/app/home/view/home.dart';
 import 'package:sdrive/firebase_options.dart';
+
+import 'app/auth/login_controller/login_controller.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,14 +21,28 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'sdrive',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const LoginView(),
+      home: const Root(),
     );
+  }
+}
+
+class Root extends StatelessWidget {
+  const Root({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    AuthController authController = Get.put(AuthController());
+    return Obx(() {
+      return authController.user.value == null
+          ? const LoginView()
+          : const Home();
+    });
   }
 }
