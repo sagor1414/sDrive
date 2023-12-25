@@ -27,7 +27,7 @@ class RecentFile extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.only(right: 10),
                   child: Container(
-                    padding: EdgeInsets.all(5),
+                    padding: const EdgeInsets.all(5),
                     decoration: BoxDecoration(
                         color: Colors.grey.withOpacity(.1),
                         borderRadius: BorderRadius.circular(8)),

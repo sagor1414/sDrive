@@ -1,10 +1,14 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sdrive/app/home/view/home.dart';
 import 'package:sdrive/general/utils/color.dart';
 import 'package:sdrive/general/utils/fonts_style.dart';
+import 'package:sdrive/general/utils/utils.dart';
 
 // ignore: non_constant_identifier_names
 OpenAddFolderDialog(context) {
+  TextEditingController folderController = TextEditingController();
   return showDialog(
     context: context,
     builder: (context) {
@@ -15,6 +19,7 @@ OpenAddFolderDialog(context) {
           style: textStyle(17, Colors.black, FontWeight.w600),
         ),
         content: TextFormField(
+          controller: folderController,
           autofocus: true,
           style: textStyle(17, Colors.black, FontWeight.w600),
           decoration: InputDecoration(
@@ -32,7 +37,13 @@ OpenAddFolderDialog(context) {
             ),
           ),
           InkWell(
-            onTap: () {},
+            onTap: () {
+              userCollection
+                  .doc(FirebaseAuth.instance.currentUser!.uid)
+                  .collection('folders')
+                  .add({"name": folderController.text, "time": DateTime.now()});
+              Get.offAll(const Home());
+            },
             child: Text(
               "Create",
               style: textStyle(16, textColor, FontWeight.bold),
