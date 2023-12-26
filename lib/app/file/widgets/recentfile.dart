@@ -39,23 +39,40 @@ class RecentFile extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10)),
                       child: Column(
                         children: [
-                          ClipRRect(
-                            borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(10.0),
-                              topRight: Radius.circular(10.0),
-                            ),
-                            child: Image.network(
-                              controller.recentfilesList[index].url,
-                              width: double.infinity,
-                              height: 100,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
+                          controller.recentfilesList[index].fileType == "image"
+                              ? ClipRRect(
+                                  borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(10.0),
+                                    topRight: Radius.circular(10.0),
+                                  ),
+                                  child: Image.network(
+                                    controller.recentfilesList[index].url,
+                                    width: double.infinity,
+                                    height: 100,
+                                    fit: BoxFit.cover,
+                                  ),
+                                )
+                              : ClipRRect(
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(top: 8),
+                                    child: Image(
+                                      width: double.infinity,
+                                      height: 100,
+                                      fit: BoxFit.cover,
+                                      image: AssetImage(
+                                          'assets/icons/${controller.recentfilesList[index].fileExtension}.png'),
+                                    ),
+                                  ),
+                                ),
                           10.heightBox,
-                          Text(
-                            controller.recentfilesList[index].name,
-                            style: textStyle(13, Colors.black, FontWeight.w300),
-                            overflow: TextOverflow.ellipsis,
+                          Padding(
+                            padding: const EdgeInsets.only(left: 4),
+                            child: Text(
+                              controller.recentfilesList[index].name,
+                              style:
+                                  textStyle(13, Colors.black, FontWeight.w300),
+                              overflow: TextOverflow.ellipsis,
+                            ),
                           )
                         ],
                       ),
