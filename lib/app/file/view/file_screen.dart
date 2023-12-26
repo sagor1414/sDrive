@@ -2,6 +2,7 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sdrive/app/file/controller/files_screen_controller.dart';
+import 'package:sdrive/app/file/services/firebase_services.dart';
 import 'package:sdrive/general/utils/fonts_style.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -69,7 +70,9 @@ class FileScreen extends StatelessWidget {
                                 ),
                               ),
                               InkWell(
-                                onTap: () {},
+                                onTap: () {
+                                  FirebaseService().uploadFile(context, '');
+                                },
                                 child: Row(
                                   children: [
                                     const Icon(
@@ -82,7 +85,7 @@ class FileScreen extends StatelessWidget {
                                       "Upload",
                                       style: textStyle(
                                           20, Colors.black, FontWeight.w600),
-                                    )
+                                    ),
                                   ],
                                 ),
                               ),
@@ -106,7 +109,7 @@ class FileScreen extends StatelessWidget {
                   ),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

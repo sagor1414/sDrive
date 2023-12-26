@@ -46,7 +46,7 @@ dependencies:
   mime: ^1.0.4
   path_provider: ^2.1.1
   uuid:
-  flutter_image_compress: ^2.1.0
+  flutter_image_compress: ^1.0.0
   flutter_ffmpeg:
   video_compress:
   url_launcher:

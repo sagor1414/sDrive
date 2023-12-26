@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:sdrive/app/file/controller/files_screen_controller.dart';
 import 'package:sdrive/general/utils/color.dart';
 import 'package:sdrive/general/utils/fonts_style.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -18,42 +20,50 @@ class RecentFile extends StatelessWidget {
           ),
         ),
         15.heightBox,
-        SizedBox(
-          height: 110,
-          child: ListView.builder(
-              itemCount: 5,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.only(right: 10),
-                  child: Container(
-                    padding: const EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                        color: Colors.grey.withOpacity(.1),
-                        borderRadius: BorderRadius.circular(8)),
-                    child: Column(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(10),
-                          child: Image.network(
-                            "https://media.wired.com/photos/5926df59f3e2356fd800ab80/master/w_2560%2Cc_limit/GettyImages-543338600-S2.jpg",
-                            width: 70,
-                            height: 70,
-                            fit: BoxFit.cover,
+        GetX<FileScreenController>(builder: (FileScreenController controller) {
+          return SizedBox(
+            height: 150,
+            child: ListView.builder(
+                itemCount: controller.recentfilesList.length,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: Container(
+                      height: 150,
+                      width: 110,
+                      // padding: const EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                          border:
+                              Border.all(color: Colors.grey.withOpacity(0.5)),
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Column(
+                        children: [
+                          ClipRRect(
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(10.0),
+                              topRight: Radius.circular(10.0),
+                            ),
+                            child: Image.network(
+                              controller.recentfilesList[index].url,
+                              width: double.infinity,
+                              height: 100,
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                        ),
-                        5.heightBox,
-                        Text(
-                          "music",
-                          style: textStyle(13, textColor, FontWeight.w300),
-                          overflow: TextOverflow.ellipsis,
-                        )
-                      ],
+                          10.heightBox,
+                          Text(
+                            controller.recentfilesList[index].name,
+                            style: textStyle(13, Colors.black, FontWeight.w300),
+                            overflow: TextOverflow.ellipsis,
+                          )
+                        ],
+                      ),
                     ),
-                  ),
-                );
-              }),
-        )
+                  );
+                }),
+          );
+        })
       ],
     );
   }
