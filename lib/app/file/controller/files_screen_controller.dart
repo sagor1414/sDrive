@@ -19,6 +19,7 @@ class FileScreenController extends GetxController {
         .snapshots()
         .map((QuerySnapshot query) {
       List<FileModel> files = [];
+      // ignore: avoid_function_literals_in_foreach_calls
       query.docs.forEach((element) {
         files.add(FileModel.fromDocumentSnapshot(element));
       });

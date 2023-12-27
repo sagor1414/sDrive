@@ -91,10 +91,10 @@ class FirebaseService {
             "dateUploaded": DateTime.now()
           });
           log('upload complete');
-          VxToast.show(context, msg: "Upload complete");
         }
         if (foldername == '') {
           Get.back();
+          VxToast.show(context, msg: "Upload complete");
         }
       } else {
         log("canceled");
