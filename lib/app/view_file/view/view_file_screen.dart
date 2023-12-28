@@ -4,6 +4,7 @@ import 'package:sdrive/general/utils/color.dart';
 import 'package:sdrive/general/utils/fonts_style.dart';
 import '../widget/show_file.dart';
 import '../widget/show_image.dart';
+import '../widget/video_player.dart';
 
 // ignore: must_be_immutable
 class ViewFileScreen extends StatelessWidget {
@@ -87,7 +88,11 @@ class ViewFileScreen extends StatelessWidget {
           ? showImage(file.url)
           : file.fileType == "application"
               ? showFile(file, context)
-              : Container(),
+              : file.fileType == "video"
+                  ? VideoPlayerWidget(
+                      url: file.url,
+                    )
+                  : file.fileType == "audio",
     );
   }
 }
