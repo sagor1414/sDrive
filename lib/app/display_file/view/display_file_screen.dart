@@ -86,16 +86,18 @@ class DisplayFileScreen extends StatelessWidget {
                                   ),
                                 ),
                               )
-                            : ClipRRect(
-                                borderRadius: BorderRadius.circular(15),
+                            : SizedBox(
+                                width: context.screenWidth / 2,
+                                height: 110,
                                 child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: const EdgeInsets.only(
+                                      top: 5, left: 8, right: 8),
                                   child: Image(
                                     image: AssetImage(
                                         'assets/icons/${fileController.files[index].fileExtension}.png'),
-                                    width: context.screenWidth / 2.5,
-                                    height: 100,
-                                    fit: BoxFit.cover,
+                                    // width: context.screenWidth / 2,
+                                    // height: 110,
+                                    fit: BoxFit.fill,
                                   ),
                                 ),
                               ),

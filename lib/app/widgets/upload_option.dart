@@ -45,7 +45,7 @@ class UploadOptions extends StatelessWidget {
               color: Colors.pink.withOpacity(0.4),
               size: 30,
             ),
-            "music",
+            "audio",
             "Audio"),
       ],
     );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sdrive/app/file/model/file_model.dart';
 import 'package:sdrive/general/utils/color.dart';
 import 'package:sdrive/general/utils/fonts_style.dart';
+import '../widget/audio_player.dart';
 import '../widget/show_file.dart';
 import '../widget/show_image.dart';
 import '../widget/video_player.dart';
@@ -92,7 +93,9 @@ class ViewFileScreen extends StatelessWidget {
                   ? VideoPlayerWidget(
                       url: file.url,
                     )
-                  : file.fileType == "audio",
+                  : file.fileType == "audio"
+                      ? AudioPlayerWidget(url: file.url)
+                      : Container(),
     );
   }
 }
