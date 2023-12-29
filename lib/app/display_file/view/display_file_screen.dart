@@ -172,6 +172,15 @@ class DisplayFileScreen extends StatelessWidget {
                                               ),
                                             ),
                                             ListTile(
+                                              onTap: () async {
+                                                await FirebaseService()
+                                                    .deleteFile(fileController
+                                                        .files[index]);
+                                                // ignore: use_build_context_synchronously
+                                                VxToast.show(context,
+                                                    msg: "Removed sucessfully");
+                                                Get.back();
+                                              },
                                               leading: const Icon(
                                                 Icons.delete,
                                                 color: Colors.grey,

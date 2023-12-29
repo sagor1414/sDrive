@@ -140,4 +140,12 @@ class FirebaseService {
     print(directory?.path);
     return directory?.path;
   }
+
+  deleteFile(FileModel file) async {
+    await userCollection
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .collection('files')
+        .doc(file.id)
+        .delete();
+  }
 }
