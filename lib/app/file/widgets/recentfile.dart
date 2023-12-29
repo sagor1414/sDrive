@@ -33,8 +33,10 @@ class RecentFile extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return InkWell(
                     onTap: () {
-                      Get.to(() => ViewFileScreen(
-                          file: controller.recentfilesList[index]));
+                      Get.to(
+                        () => ViewFileScreen(
+                            file: controller.recentfilesList[index]),
+                      );
                     },
                     child: Padding(
                       padding: const EdgeInsets.only(right: 10),
