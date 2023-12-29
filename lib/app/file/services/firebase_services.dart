@@ -96,7 +96,6 @@ class FirebaseService {
           log('upload complete');
         }
         if (foldername == '') {
-          Get.back();
           VxToast.show(context, msg: "Upload complete");
         }
       } else {

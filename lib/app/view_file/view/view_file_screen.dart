@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sdrive/app/file/model/file_model.dart';
 import 'package:sdrive/general/utils/color.dart';
 import 'package:sdrive/general/utils/fonts_style.dart';
+import 'package:velocity_x/velocity_x.dart';
+import '../../file/services/firebase_services.dart';
 import '../widget/audio_player.dart';
 import '../widget/show_file.dart';
 import '../widget/show_image.dart';
@@ -53,6 +56,11 @@ class ViewFileScreen extends StatelessWidget {
                             height: 3,
                           ),
                           ListTile(
+                            onTap: () async {
+                              FirebaseService().downloadfile(file);
+                              // ignore: use_build_context_synchronously
+                              VxToast.show(context, msg: "download complete");
+                            },
                             leading: const Icon(
                               Icons.file_download,
                               color: Colors.grey,
@@ -64,6 +72,11 @@ class ViewFileScreen extends StatelessWidget {
                             ),
                           ),
                           ListTile(
+                            onTap: () async {
+                              await FirebaseService().deleteFile(file);
+                              // ignore: use_build_context_synchronously
+                              VxToast.show(context, msg: "Remove completely");
+                            },
                             leading: const Icon(
                               Icons.delete,
                               color: Colors.grey,
