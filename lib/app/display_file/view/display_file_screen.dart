@@ -150,6 +150,15 @@ class DisplayFileScreen extends StatelessWidget {
                                               height: 3,
                                             ),
                                             ListTile(
+                                              onTap: () async {
+                                                await FirebaseService()
+                                                    .downloadfile(fileController
+                                                        .files[index]);
+                                                // ignore: use_build_context_synchronously
+                                                VxToast.show(context,
+                                                    msg: "download complete");
+                                                Get.back();
+                                              },
                                               leading: const Icon(
                                                 Icons.file_download,
                                                 color: Colors.grey,
