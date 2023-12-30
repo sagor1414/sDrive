@@ -19,6 +19,7 @@ class StorageController extends GetxController {
         .snapshots()
         .map((QuerySnapshot query) {
       int size = 0;
+      // ignore: avoid_function_literals_in_foreach_calls
       query.docs.forEach((element) {
         size = size + extractsize(element);
       });
