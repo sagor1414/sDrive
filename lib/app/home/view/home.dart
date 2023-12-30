@@ -4,7 +4,7 @@ import 'package:sdrive/app/file/view/file_screen.dart';
 import 'package:sdrive/app/home/controller/navigation_controller.dart';
 
 import '../../widgets/header.dart';
-import '../../widgets/storage_scrren.dart';
+import '../../storage_screen/view/storage_scrren.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
