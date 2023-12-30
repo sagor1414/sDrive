@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:sdrive/app/home/controller/storage_controller.dart';
 import 'package:sdrive/general/utils/color.dart';
 import 'package:sdrive/general/utils/fonts_style.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -6,8 +8,21 @@ import 'package:velocity_x/velocity_x.dart';
 class StorageContainer extends StatelessWidget {
   const StorageContainer({super.key});
 
+  getSize(int size) {
+    if (size < 1000) {
+      return "$size KB";
+    } else if (size < 1000000) {
+      int sizeMb = (size * 0.001).round();
+      return "$sizeMb MB";
+    } else {
+      int sizeGb = (size * 0.000001).round();
+      return "$sizeGb GB";
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    StorageController controller = Get.put(StorageController());
     return Container(
       width: context.screenWidth,
       margin: const EdgeInsets.only(left: 15, right: 15),
@@ -40,30 +55,34 @@ class StorageContainer extends StatelessWidget {
                   BoxShadow(color: Colors.grey.withOpacity(.8), blurRadius: 10)
                 ],
               ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        '56',
-                        style: textStyle(
-                            50, const Color(0xff635C9B), FontWeight.bold),
-                      ),
-                      Text(
-                        '%',
-                        style: textStyle(
-                            17, const Color(0xff635C9B), FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                  Text(
-                    'Used',
-                    style: textStyle(
-                        20, textColor.withOpacity(0.7), FontWeight.bold),
-                  )
-                ],
+              child: Obx(
+                () => Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          ((controller.size.value / 1000000) * 100)
+                              .round()
+                              .toString(),
+                          style: textStyle(
+                              50, const Color(0xff635C9B), FontWeight.bold),
+                        ),
+                        Text(
+                          '%',
+                          style: textStyle(
+                              17, const Color(0xff635C9B), FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    Text(
+                      'Used',
+                      style: textStyle(
+                          20, textColor.withOpacity(0.7), FontWeight.bold),
+                    )
+                  ],
+                ),
               ),
             ),
             20.heightBox,
@@ -88,7 +107,7 @@ class StorageContainer extends StatelessWidget {
                               18, textColor.withOpacity(0.7), FontWeight.w600),
                         ),
                         Text(
-                          "11 GB",
+                          getSize(controller.size.value),
                           style: textStyle(
                               20, const Color(0xff635C9B), FontWeight.w600),
                         )
@@ -114,7 +133,7 @@ class StorageContainer extends StatelessWidget {
                               18, textColor.withOpacity(0.7), FontWeight.w600),
                         ),
                         Text(
-                          "9 GB",
+                          "1 GB",
                           style: textStyle(
                               20, const Color(0xff635C9B), FontWeight.w600),
                         )
