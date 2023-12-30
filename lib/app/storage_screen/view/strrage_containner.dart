@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sdrive/app/home/controller/storage_controller.dart';
+import 'package:sdrive/app/storage_screen/contoller/storage_controller.dart';
 import 'package:sdrive/general/utils/color.dart';
 import 'package:sdrive/general/utils/fonts_style.dart';
 import 'package:velocity_x/velocity_x.dart';

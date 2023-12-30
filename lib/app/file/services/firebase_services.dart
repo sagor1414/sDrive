@@ -28,7 +28,7 @@ class FirebaseService {
       return result;
     } else if (fileType == "video") {
       MediaInfo? info = await VideoCompress.compressVideo(file.path,
-          quality: VideoQuality.MediumQuality,
+          quality: VideoQuality.LowQuality,
           deleteOrigin: false,
           includeAudio: true);
       return File(info!.path!);

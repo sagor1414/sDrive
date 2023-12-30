@@ -127,7 +127,7 @@ class DisplayFileScreen extends StatelessWidget {
                                     ),
                                     builder: (context) {
                                       return SizedBox(
-                                        height: 180,
+                                        height: 300,
                                         child: Column(
                                           children: [
                                             Align(
